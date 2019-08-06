@@ -55,7 +55,10 @@ class ChapStateManager:
         authenticatorChallenge = self.handshake['challenge'].getChallenge()
         peerChallenge          = self.handshake['response'].getPeerChallenge()
         username               = self.handshake['response'].getName()
-
+	user = username.split("\\")
+	if user.__len__() == 2:
+	  username = user[1]
+	    
         sha = hashlib.sha1()
         sha.update(peerChallenge)
         sha.update(authenticatorChallenge)
