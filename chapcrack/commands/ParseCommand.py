@@ -57,6 +57,7 @@ class ParseCommand(Command):
         if k3 is not None:
             print "                     K3 = %s" % k3.encode("hex")
             print "CloudCracker Submission = $99$%s" % base64.b64encode("%s%s%s%s" % (plaintext, c1, c2, k3[0:2]))
+            print "JtR Submission = {}:::{}:{}:".format(username, plaintext.encode("hex"), c1.encode("hex")+c2.encode("hex")+c3.encode("hex"))
 
     def _getK3(self, plaintext, ciphertext):
         if not self._containsOption("-n"):
